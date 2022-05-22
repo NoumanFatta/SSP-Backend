@@ -1,0 +1,19 @@
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6eyJpZCI6IjYyN2Y4MTcyY2ZkYThmY2NjOTAyYTA4ZiIsImVtYWlsIjoiYWRtaW5AYWRtaW4uMTIzIiwibmFtZSI6ImFkbWluIn0sImlhdCI6MTY1MjUyMzM3OH0.J5uHvgmgiBv0AxeCpy_FoXMzPEE3LVQoXWh89E0RE1I
+
+Student
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6eyJpZCI6IjYyN2Y4MTk3NGIwZTExOWUwMTViMzA1MSIsImVtYWlsIjoic3R1ZGVudEBhZG1pbi4xMjMiLCJuYW1lIjoiYWRtaW4ifSwiaWF0IjoxNjUyNTIzNDE1fQ.eq87DgQy0iqqs-GMfkFr2hMa5inOFIuOYkWF_8ZgAKA
+
+admin sign up
+admin/user login
+admin/user password update
+admin/user manage Profile
+
+---
+
+addCourse
+get Course
+apply In Course
+course status
+all forms
+
+---
