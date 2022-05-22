@@ -27,7 +27,7 @@ app.use("/course", courseRouter);
 app.use("/leaves", leavesRouter);
 
 // App port
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 // const host = "192.168.120.64"
 
 // activating server
