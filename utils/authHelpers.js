@@ -36,7 +36,7 @@ export const tokenGenerator = (user) => {
       rollNo: user.rollNo,
     },
   };
-  return jwt.sign(data, process.env.JWT_SECRET);
+  return jwt.sign(data, "Pakistan");
 };
 
 // token extractor or token checker
@@ -46,7 +46,7 @@ export const tokenExtractor = (req, res, next) => {
     if (!token) {
       return res.status(400).send({ error: "Token Not Found" });
     }
-    const decodeData = jwt.verify(token, process.env.JWT_SECRET);
+    const decodeData = jwt.verify(token, "Pakistan");
     req.user = decodeData.userData;
     next();
   } catch (error) {
