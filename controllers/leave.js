@@ -3,11 +3,13 @@ import Leave from "../models/leave.js";
 import { isThisAdmin, tokenExtractor } from "../utils/authHelpers.js";
 import { sendResponse, serverError } from "../utils/serverResponse.js";
 import router from "./course.js";
+import multer from "multer";
 
 // ROUTE : 1 POST ADD LEAVE APPLICATION
 router.post(
   "/addLeave",
   tokenExtractor,
+  multer().single("leaveImage"),
   [
     //validation
     body("subject", "Subject is requrired").notEmpty(),
@@ -20,11 +22,14 @@ router.post(
     }
     try {
       const { subject, description } = req.body;
-
+      const mimeType = req.file.mimetype;
+      const b64 = Buffer.from(req.file.buffer).toString("base64");
+      const image = `data:${mimeType};base64,${b64}`;
       let leave = await Leave.create({
         user: req.user.id,
         subject,
         description,
+        image,
       });
       return sendResponse(res, 201, { leave });
     } catch (error) {
@@ -64,8 +69,8 @@ router.post(
 // ROUTE : 3 Get all applications
 router.get("/getLeaves", tokenExtractor, isThisAdmin, async (req, res) => {
   try {
-    let leaves = await Leave.find()
-      .populate({ path: "user", select: "name email" })
+    let leaves = await Leave.find({ status: "pending" })
+      .populate({ path: "user", select: "name email fullName fatherName" })
       .exec();
     sendResponse(res, 200, { leaves });
   } catch (error) {

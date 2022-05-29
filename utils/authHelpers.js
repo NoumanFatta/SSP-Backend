@@ -26,7 +26,7 @@ export const passwordHasher = (password) => {
 };
 
 // creating token for sending on front end
-export const tokenGenerator = (user) => {
+export const tokenGenerator = (user, isApplied = false) => {
   const data = {
     userData: {
       id: user.id,
@@ -34,6 +34,7 @@ export const tokenGenerator = (user) => {
       name: user.name,
       isAdmin: user.isAdmin,
       rollNo: user.rollNo,
+      isApplied,
     },
   };
   return jwt.sign(data, "Pakistan");

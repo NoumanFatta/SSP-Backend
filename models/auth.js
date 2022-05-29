@@ -8,12 +8,8 @@ const AuthSchema = new mongoose.Schema({
     required: true,
   },
   password: { type: String, required: true },
-  isAdmin: { type: Boolean, default: false },
+  isAdmin: { type: Boolean, default: true },
   uniqueId: { type: String },
-  roleNo: { type: String, index: true, unique: true, sparse: true },
-  cnic: { type: String, index: true, unique: true, sparse: true },
-  appliedCourses: [{ type: mongoose.Types.ObjectId, ref: "course" }],
-  enrolledCourses: [{ type: mongoose.Types.ObjectId, ref: "course" }],
   timeStamp: { type: Date, default: Date.now() },
 });
 

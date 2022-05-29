@@ -1,6 +1,5 @@
 // Server Error Response
 export const serverError = (error, res) => {
-  console.error(error);
   return res.status(500).send({ error: "Internal Server Error" });
 };
 
@@ -17,6 +16,9 @@ export const badRequest = (res, data) => {
 // Not Found Request
 export const notFound = (res, data) => {
   return res.status(404).send(data ? data : { error: "Not Found" });
+};
+export const alreadyExists = (res, data) => {
+  return res.status(409).send(data ? data : { error: "Already Exists" });
 };
 
 //Send Reponse Function
