@@ -5,8 +5,6 @@ const CourseScehma = new mongoose.Schema({
   status: { type: Boolean, default: true },
   appliedStudents: [{ type: mongoose.Types.ObjectId, ref: "auth" }],
   timeStamp: { type: Date, default: Date.now() },
-  // enrolledStudent: [{ type: mongoose.Types.ObjectId, ref: "auth" }],
-  // duration: { type: Number, required: true }, //In Month
 });
 
 const Course = mongoose.model("course", CourseScehma);

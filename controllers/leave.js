@@ -22,16 +22,25 @@ router.post(
     }
     try {
       const { subject, description } = req.body;
-      const mimeType = req.file.mimetype;
-      const b64 = Buffer.from(req.file.buffer).toString("base64");
-      const image = `data:${mimeType};base64,${b64}`;
-      let leave = await Leave.create({
-        user: req.user.id,
-        subject,
-        description,
-        image,
-      });
-      return sendResponse(res, 201, { leave });
+      if (req.file) {
+        const mimeType = req.file.mimetype;
+        const b64 = Buffer.from(req.file.buffer).toString("base64");
+        const image = `data:${mimeType};base64,${b64}`;
+        let leave = await Leave.create({
+          user: req.user.id,
+          subject,
+          description,
+          image,
+        });
+        return sendResponse(res, 201, { leave });
+      } else {
+        let leave = await Leave.create({
+          user: req.user.id,
+          subject,
+          description,
+        });
+        return sendResponse(res, 201, { leave });
+      }
     } catch (error) {
       return serverError(error, res);
     }

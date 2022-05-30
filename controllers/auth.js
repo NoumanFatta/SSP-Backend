@@ -64,16 +64,6 @@ router.post("/signup", async (req, res) => {
 router.post(
   "/updatePassword",
   tokenExtractor,
-  [
-    //validation
-    body("password", "Password must be 6 letter long").notEmpty(),
-    body("confirmPassword", "Password must be 6 letter long").isLength({
-      min: 6,
-    }),
-    body("updatePassword", "Password must be 6 letter long").isLength({
-      min: 6,
-    }),
-  ],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -135,12 +125,6 @@ router.post(
   "/addAdmin",
   tokenExtractor,
   isThisAdmin,
-  [
-    //validation
-    body("email", "Enter Valid Email").isEmail(),
-    body("password", "Password must be 6 letter long").isLength({ min: 6 }),
-    body("name", "Name is Required").notEmpty(),
-  ],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty) {
